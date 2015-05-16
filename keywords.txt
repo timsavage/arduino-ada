@@ -1,0 +1,41 @@
+#######################################
+# Syntax Coloring Map For UI
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+IEventHandler	KEYWORD1
+Timer	KEYWORD1
+Pin		KEYWORD1
+Input	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+begin	KEYWORD2
+cancel	KEYWORD2
+ttl		KEYWORD2
+elapsed	KEYWORD2
+isActive	KEYWORD2
+handleEvents	KEYWORD2
+read	KEYWORD2
+write	KEYWORD2
+toggle	KEYWORD2
+
+DECLARE_EVENT	KEYWORD2
+RAISE_EVENT	KEYWORD2
+BEGIN_EVENT_HANDLERS	KEYWORD2
+REGISTER_HANDLER	KEYWORD2
+END_EVENT_HANDLERS	KEYWORD2
+HANDLE_EVENTS	KEYWORD2
+EVENT_LOOP	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+EVENT_HANDLERS 	LITERAL1
+EVENT_HANDLER_COUNT	LITERAL1
