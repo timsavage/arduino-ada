@@ -1,5 +1,5 @@
 #######################################
-# Syntax Coloring Map For UI
+# Syntax Coloring Map For Ada
 #######################################
 
 #######################################
@@ -32,10 +32,5 @@ REGISTER_HANDLER	KEYWORD2
 END_EVENT_HANDLERS	KEYWORD2
 HANDLE_EVENTS	KEYWORD2
 EVENT_LOOP	KEYWORD2
-
-#######################################
-# Constants (LITERAL1)
-#######################################
-
-EVENT_HANDLERS 	LITERAL1
-EVENT_HANDLER_COUNT	LITERAL1
+BEGIN_GLOBAL_EVENT_HANDLERS	KEYWORD2
+GLOBAL_EVENT_LOOP	KEYWORD2

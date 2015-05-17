@@ -1,5 +1,5 @@
-#ifndef _ui__h
-#define _ui__h
+#ifndef _ui__h_
+#define _ui__h_
 
 #include <Arduino.h>
 #include "events.h"
@@ -92,4 +92,4 @@ protected:
 	int m_lastState;
 };
 
-#endif // _ui__h
+#endif // _ui__h_

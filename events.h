@@ -3,7 +3,7 @@
  *
  * Usage:
  * 
- *   BEGIN_EVENT_HANDLERS()
+ *   BEGIN_GLOBAL_EVENT_HANDLERS()
  *     REGISTER_HANDLER(myButton)
  *     REGISTER_HANDLER(myTimer)
  *   END_EVENT_HANDLERS()
@@ -13,7 +13,7 @@
  * And for your loop method use:
  *
  *   void loop() { 
- *     HANDLE_EVENTS() 
+ *     HANDLE_GLOBAL_EVENTS() 
  *   }
  */
 #ifndef _events__h
@@ -46,29 +46,28 @@ typedef void eventCallback(IEventHandler*);
 #define RAISE_EVENT(NAME) if (m_on##NAME) m_on##NAME(this);
 
 // Start event handler block
-#define BEGIN_EVENT_HANDLERS() IEventHandler* __ui_eventHandlers[] = {
+#define BEGIN_EVENT_HANDLERS(NAME) IEventHandler* __##NAME_eventHandlers[] = {
 
- // Register a IEventHandler object
+ // Register an IEventHandler object
 #define REGISTER_HANDLER(x)	&x,
 
 // End event handler block.
-#define END_EVENT_HANDLERS() }; \
-	const size_t __ui_eventHandlerCount = sizeof(__ui_eventHandlers) / sizeof(IEventHandler*); \
-	size_t __ui_idx;
+#define END_EVENT_HANDLERS() };
+
+// Helper that provides the length of an event handler array
+#define EVENT_HANDLER_COUNT(NAME) (sizeof(__##NAME_eventHandlers) / sizeof(IEventHandler*))
 
 // Execute each event handler.
-#define HANDLE_EVENTS() \
-	for (__ui_idx = 0; __ui_idx < __ui_eventHandlerCount; __ui_idx++) { \
-		__ui_eventHandlers[__ui_idx]->handleEvents(); \
+#define HANDLE_EVENTS(NAME) \
+	size_t _idx; \
+	for (_idx = 0; _idx < EVENT_HANDLER_COUNT(NAME); _idx++) { \
+		__##NAME_eventHandlers[_idx]->handleEvents(); \
 	}
 
+// Short cut global even handlers
+#define BEGIN_GLOBAL_EVENT_HANDLERS() BEGIN_EVENT_HANDLERS(global)
+
 // Short cut method to simply define a loop method that just calls executes event handlers.
-#define EVENT_LOOP() void loop() { HANDLE_EVENTS() }
+#define GLOBAL_EVENT_LOOP() void loop() { HANDLE_EVENTS(global) }
 
-// Helper that provides access to the event handler array
-#define EVENT_HANDLERS __ui_eventHandlers
-
-// Helper that provides the length of the event handler array
-#define EVENT_HANDLER_COUNT __ui_eventHandlerCount
-
-#endif //_events__h
+#endif //!_events__h
