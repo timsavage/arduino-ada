@@ -65,9 +65,9 @@ typedef void eventCallback(IEventHandler*);
 	}
 
 // Short cut global even handlers
-#define BEGIN_GLOBAL_EVENT_HANDLERS() BEGIN_EVENT_HANDLERS(global)
+#define GLOBAL_EVENT_HANDLERS() BEGIN_EVENT_HANDLERS(global)
 
 // Short cut method to simply define a loop method that just calls executes event handlers.
-#define GLOBAL_EVENT_LOOP() void loop() { HANDLE_EVENTS(global) }
+#define EVENT_LOOP() void loop() { HANDLE_EVENTS(global) }
 
 #endif //!_events__h
